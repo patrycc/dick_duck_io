@@ -36,17 +36,17 @@ def click_field(posi):
                 if x >= a[1] and x <= a[2] and y >= a[3] and y <= a[4] and dicks[a[0]] == 0:
                         dicks[a[0]] = dran
                         draw_dick(dran, screen)
-
-
+                        if (check_dick() == 1 or check_dick() == 2):
+                                print("Gewonnen! Juchee!")
 
 def draw_dick(dran, screen):
 
         for f in felder:
                 a = felder[f]
                 if (dicks[a[0]] == 1):
-                        screen.blit(get_image('dick.png'), (a[1], a[3]))
+                        screen.blit(get_image('img/dick.png'), (a[1], a[3]))
                 elif (dicks[a[0]] == 2):
-                        screen.blit(get_image('duck.png'), (a[1], a[3]))
+                        screen.blit(get_image('img/duck.png'), (a[1], a[3]))
         
 def check_dick():
         if (dicks[0] == dran and dicks[1] == dran and dicks[2] == dran):
@@ -68,7 +68,6 @@ def check_dick():
         else:
                 return 0
 
-
 pygame.init()
 screen = pygame.display.set_caption("Dick Duck Io [HOTSEAT EDITION]")
 screen = pygame.display.set_mode((600, 600))
@@ -76,7 +75,7 @@ screen = pygame.display.set_mode((600, 600))
 done = False
 clock = pygame.time.Clock()
 
-screen.blit(get_image('bg.png'), (0, 0))
+screen.blit(get_image('img/bg.png'), (0, 0))
 
 while not done:
         for event in pygame.event.get():
@@ -87,11 +86,10 @@ while not done:
                         if event.button == 1: # left click
                                 print(event.pos)
                                 click_field(event.pos)
-                                print(check_dick())
-                        if (dran == 1):
-                                dran = 2
-                        else:
-                                dran = 1
+                                if (dran == 1):
+                                        dran = 2
+                                else:
+                                        dran = 1
         
         pygame.display.flip()
         clock.tick(60)    
