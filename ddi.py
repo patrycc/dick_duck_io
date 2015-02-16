@@ -51,14 +51,13 @@ def click_field(posi):
                 a = felder[f]
                 if x >= a[1] and x <= a[2] and y >= a[3] and y <= a[4] and dicks[a[0]] == 0:
                         dicks[a[0]] = dran
-                        set_dran()
                         if (check_dick() == 1 or check_dick() == 2):
                                 dicks = [dran * 10, dran * 10, dran * 10, dran * 10, dran * 10, dran * 10, dran * 10, dran * 10, 3]
+                        set_dran()
                 elif x >= a[1] and x <= a[2] and y >= a[3] and y <= a[4] and dicks[a[0]] == 3:
                         dicks = [0, 0, 0, 0, 0, 0, 0, 0, 0]
                         dran = 0
                         set_dran()
-                        draw_dick()
                 draw_dick()
 
 #set next players id 
